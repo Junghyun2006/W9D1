@@ -1,4 +1,4 @@
-export default class Level {
+export default class Level extends FlappyBird {
   constructor(dimensions) {
     this.dimensions = dimensions;
   }
