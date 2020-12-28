@@ -1,12 +1,3 @@
-Function.prototype.myBind = function (ctx, ...bindArgs) {
-    const fn = this;
-    return function (...callArgs) {
-        return fn.apply(ctx, bindArgs.concat(callArgs));
-    };
-};
-
-
-
 class Cat {
     constructor(name) {
         this.name = name;
@@ -26,6 +17,16 @@ class Dog {
 
 const markov = new Cat("Markov");
 const pavlov = new Dog("Pavlov");
+
+Function.prototype.myBind = function (ctx, ...bindArgs) {
+    const fn = this;
+    // const bindArgs = Array.from(arguments).slice(1);   
+    return function (...callArgs) {
+        // const callArgs = Array.from(arguments);
+        return fn.apply(ctx, bindArgs.concat(callArgs));
+    };
+};
+
 
 console.log(markov.says("meow", "Ned"));
 // Markov says meow to Ned!
